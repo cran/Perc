@@ -1,5 +1,6 @@
 ## ------------------------------------------------------------------------
 library(Perc)
+
 # displaying the first 5 rows of the example data.
 head(sampleEdgelist, 5)
 
@@ -10,10 +11,6 @@ head(sampleWeightedEdgelist, 5)
 ## ------------------------------------------------------------------------
 # displaying the first 5 rows and columns
 sampleRawMatrix[1:5, 1:5]
-
-## ------------------------------------------------------------------------
-?as.conflictmat
-?subset
 
 ## ------------------------------------------------------------------------
 # convert an two-column edgelist to conflict matrix
@@ -27,7 +24,7 @@ confmatrix[1:5, 1:5]
 confmatrix2 <- as.conflictmat(sampleRawMatrix)
 
 # displaying the first 5 rows and columns of the converted matrix
-confmatrix2[1:5, 1:5]
+confmatrix2[1]
 
 ## ------------------------------------------------------------------------
 confmatrix3 <- as.conflictmat(sampleWeightedEdgelist, weighted = TRUE)
@@ -51,7 +48,6 @@ pathKuai[1:5, ]
 
 # When there's no pathway starting at a particular individual, you'll get an output like the example below: 
 pathKalani <- findIDpaths(confmatrix, ID = "Kalani", len = 2)
-pathKalani
 
 ## ------------------------------------------------------------------------
 conftrans <- transitivity(confmatrix)

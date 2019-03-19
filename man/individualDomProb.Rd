@@ -27,4 +27,3 @@ individualLevelOutput <- individualDomProb(perm2$p.hat)
 \seealso{
 \code{\link{conductance}}, \code{\link{valueConverter}}, \code{\link{dyadicLongConverter}}
 }
-

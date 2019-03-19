@@ -21,4 +21,3 @@ sampleWeightedEdgelist.
 dominance interactions among 29 monkeys
 }
 \keyword{datasets}
-

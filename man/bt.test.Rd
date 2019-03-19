@@ -54,4 +54,3 @@ confmatrix_bt <- as.conflictmat(edgelist1)
 \references{
 Shev, A., Fujii, K., Hsieh, F., & McCowan, B. (2014). Systemic Testing on Bradley-Terry Model against Nonlinear Ranking Hierarchy. PloS one, 9(12), e115367.
 }
-

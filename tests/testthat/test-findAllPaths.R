@@ -7,6 +7,7 @@
 context("Testing findAllPaths Function")
 
 # test data generation
+RNGversion("3.5.2")
 set.seed(1)
 edgelist1 <- data.frame(col1 = sample(letters[1:15], 200, replace = TRUE), 
                         col2 = sample(letters[1:15], 200, replace = TRUE), 

@@ -34,4 +34,3 @@ plotConfmat(perm2$p.hat)
 \seealso{
 \code{\link{as.conflictmat}}, \code{\link{conductance}}
 }
-

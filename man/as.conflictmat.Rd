@@ -39,4 +39,3 @@ confmatrix3 <- as.conflictmat(sampleWeightedEdgelist, weighted = TRUE, swap.orde
 \seealso{
 \code{\link{findIDpaths}}, \code{\link{countPaths}}, \code{\link{transitivity}}, \code{\link{conductance}}
 }
-

@@ -17,4 +17,3 @@ a data.frame of all costs.
 \description{
 assign IDs to all best rank orders
 }
-

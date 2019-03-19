@@ -28,4 +28,3 @@ npaths <- countPaths(confmatrix, 3)
 \seealso{
 \code{\link{as.conflictmat}}, \code{\link{findIDpaths}}, \code{\link{transitivity}}, \code{\link{conductance}}
 }
-

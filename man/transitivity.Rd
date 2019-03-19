@@ -46,4 +46,3 @@ conftrans$alpha
 \seealso{
 \code{\link{countPaths}}, \code{\link{findIDpaths}}, \code{\link{conductance}}
 }
-

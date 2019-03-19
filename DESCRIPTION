@@ -2,10 +2,11 @@ Package: Perc
 Type: Package
 Title: Using Percolation and Conductance to Find Information Flow
         Certainty in a Direct Network
-Version: 0.1.2
-Date: 2016-05-04
+Version: 0.1.3
+Date: 2019-03-11
 Authors@R: c(person("Kevin", "Fujii", email = "kevfujii@gmail.com", role = "aut"),
-  person("Jian", "Jin", email = "jinjian.pku@gmail.com", role = c("aut", "cre")),
+  person("Jian", "Jin", email = "jinjian.pku@gmail.com", role = "aut"), 
+  person("Jessica", "Vandeleest", email = "vandelee@ucdavis.edu", role = c("aut","cre")),
   person("Aaron", "Shev", email = "abshev@ucdavis.edu", role = "aut"),
   person("Brianne", "Beisner", role = "aut"),
   person("Brenda", "McCowan", role = c("aut", "cph")),
@@ -19,15 +20,16 @@ LazyData: true
 Imports: stats, grDevices
 Suggests: testthat, knitr, devtools, reshape2, lattice
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2016-12-05 14:45:10 UTC; hornik
+Packaged: 2019-03-11 18:54:39 UTC; Jessica
 Author: Kevin Fujii [aut],
-  Jian Jin [aut, cre],
+  Jian Jin [aut],
+  Jessica Vandeleest [aut, cre],
   Aaron Shev [aut],
   Brianne Beisner [aut],
   Brenda McCowan [aut, cph],
   Hsieh Fushing [aut, cph]
-Maintainer: Jian Jin <jinjian.pku@gmail.com>
+Maintainer: Jessica Vandeleest <vandelee@ucdavis.edu>
 Repository: CRAN
-Date/Publication: 2016-12-05 18:28:46
+Date/Publication: 2019-03-19 18:23:35 UTC

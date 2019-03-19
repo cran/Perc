@@ -44,4 +44,3 @@ confmatrix_bt <- as.conflictmat(edgelist1)
 # Computes the MLE for the BT model
 bt <- bradleyTerry(confmatrix_bt)
 }
-

@@ -21,4 +21,3 @@ a list of three elements
 \description{
 get useful outputs from simulated annealing processes
 }
-

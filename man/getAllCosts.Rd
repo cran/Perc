@@ -17,4 +17,3 @@ a data.frame of all costs.
 \description{
 Associate each costs with its corresponding simulated annealing runs
 }
-

@@ -56,4 +56,3 @@ Fushing, H., McAssey, M. P., Beisner, B., & McCowan, B. (2011). Ranking network 
 \seealso{
 \code{\link{conductance}} \code{\link{transitivity}}
 }
-

@@ -22,4 +22,3 @@ Diagnosis Plot
 \seealso{
 \code{\link{plotConfmat}}
 }
-

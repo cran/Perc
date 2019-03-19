@@ -26,4 +26,3 @@ path38891 <- findIDpaths(confmatrix, ID = "Kuai", len = 2)
 \seealso{
 \code{\link{as.conflictmat}}, \code{\link{findAllPaths}}, \code{\link{countPaths}}
 }
-

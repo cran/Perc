@@ -39,6 +39,7 @@ test_that("returns conf.mat", {
   expect_is(as.conflictmat(testEdgelist1), "conf.mat")
 })
 
+RNGversion("3.5.2")
 test_that("diagonal of the raw win-loss matrix should be zeros", {
   set.seed(1)
   testMatrix1 <- matrix(sample(1:100, 100, TRUE), 10, 10)

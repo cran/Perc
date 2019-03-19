@@ -28,4 +28,3 @@ convertedValue <- valueConverter(perm2$p.hat)
 \seealso{
 \code{\link{conductance}}, \code{\link{individualDomProb}}, \code{\link{dyadicLongConverter}}
 }
-

@@ -72,4 +72,3 @@ PLoS ONE 6(3):e17817.
 \seealso{
 \code{\link{as.conflictmat}}, \code{\link{findIDpaths}}, \code{\link{transitivity}}, \code{\link{simRankOrder}}
 }
-

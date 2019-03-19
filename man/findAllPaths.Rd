@@ -32,4 +32,3 @@ allp.3 <- findAllPaths(confmatrix, 3)
 \seealso{
 \code{\link{countPaths}} \code{\link{findIDpaths}} \code{\link{transitivity}}
 }
-

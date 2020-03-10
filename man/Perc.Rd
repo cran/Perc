@@ -3,7 +3,6 @@
 \docType{package}
 \name{Perc}
 \alias{Perc}
-\alias{Perc-package}
 \title{Perc.}
 \description{
 Perc.

@@ -250,7 +250,7 @@ individualDomProb <- function(matrix){
   attributes(Mean) <- NULL
   attributes(SD) <- NULL
   
-  individualProb <- data.frame(ID = rownames(matrix), Mean = Mean, SD = SD)
+  individualProb <- data.frame(ID = rownames(matrix), Mean = Mean, SD = SD, stringsAsFactors = FALSE)
   return(individualProb)
 }
 

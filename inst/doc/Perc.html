@@ -1,483 +1,489 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>Introduction</title>
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<script type="text/javascript">
-window.onload = function() {
-  var imgs = document.getElementsByTagName('img'), i, img;
-  for (i = 0; i < imgs.length; i++) {
-    img = imgs[i];
-    // center an image if it is the only element of its parent
-    if (img.parentElement.childElementCount === 1)
-      img.parentElement.style.textAlign = 'center';
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Fushing Lab &amp; McCowan Lab, University of California, Davis" />
+
+<meta name="date" content="2020-03-10" />
+
+<title>Introduction to Perc Package</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-};
-</script>
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 
-<!-- Styles for R syntax highlighter -->
-<style type="text/css">
-   pre .operator,
-   pre .paren {
-     color: rgb(104, 118, 135)
-   }
-
-   pre .literal {
-     color: #990073
-   }
-
-   pre .number {
-     color: #099;
-   }
-
-   pre .comment {
-     color: #998;
-     font-style: italic
-   }
-
-   pre .keyword {
-     color: #900;
-     font-weight: bold
-   }
-
-   pre .identifier {
-     color: rgb(0, 0, 0);
-   }
-
-   pre .string {
-     color: #d14;
-   }
 </style>
-
-<!-- R syntax highlighter -->
-<script type="text/javascript">
-var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
-hljs.initHighlightingOnLoad();
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
 </script>
 
 
 
-<style type="text/css">
-body, td {
-   font-family: sans-serif;
-   background-color: white;
-   font-size: 13px;
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
 }
-
-body {
-  max-width: 800px;
-  margin: auto;
-  padding: 1em;
-  line-height: 20px;
+#header {
+text-align: center;
 }
-
-tt, code, pre {
-   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
 }
-
-h1 {
-   font-size:2.2em;
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
 }
-
-h2 {
-   font-size:1.8em;
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
 }
-
-h3 {
-   font-size:1.4em;
+#TOC ul ul {
+margin-left: -2em;
 }
-
-h4 {
-   font-size:1.0em;
+#TOC li {
+line-height: 16px;
 }
-
-h5 {
-   font-size:0.9em;
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
 }
-
-h6 {
-   font-size:0.8em;
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
 }
-
-a:visited {
-   color: rgb(50%, 0%, 50%);
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
 }
-
-pre, img {
-  max-width: 100%;
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
 }
 pre {
-  overflow-x: auto;
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
 }
-pre code {
-   display: block; padding: 0.5em;
+pre:not([class]) {
+background-color: #f7f7f7;
 }
-
 code {
-  font-size: 92%;
-  border: 1px solid #ccc;
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
 }
-
-code[class] {
-  background-color: #F8F8F8;
+p > code, li > code {
+padding: 2px 0px;
 }
-
-table, td, th {
-  border: none;
+div.figure {
+text-align: center;
 }
-
-blockquote {
-   color:#666666;
-   margin:0;
-   padding-left: 1em;
-   border-left: 0.5em #EEE solid;
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
 }
-
-hr {
-   height: 0px;
-   border-bottom: none;
-   border-top-width: thin;
-   border-top-style: dotted;
-   border-top-color: #999999;
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
 }
-
-@media print {
-   * {
-      background: transparent !important;
-      color: black !important;
-      filter:none !important;
-      -ms-filter: none !important;
-   }
-
-   body {
-      font-size:12pt;
-      max-width:100%;
-   }
-
-   a, a:visited {
-      text-decoration: underline;
-   }
-
-   hr {
-      visibility: hidden;
-      page-break-before: always;
-   }
-
-   pre, blockquote {
-      padding-right: 1em;
-      page-break-inside: avoid;
-   }
-
-   tr, img {
-      page-break-inside: avoid;
-   }
-
-   img {
-      max-width: 100% !important;
-   }
-
-   @page :left {
-      margin: 15mm 20mm 15mm 10mm;
-   }
-
-   @page :right {
-      margin: 15mm 10mm 15mm 20mm;
-   }
-
-   p, h2, h3 {
-      orphans: 3; widows: 3;
-   }
-
-   h2, h3 {
-      page-break-after: avoid;
-   }
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
 }
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
+
 
 
 
 </head>
 
 <body>
-<p><strong>Abstract</strong>  </p>
 
-<p>Dominance structure of animal societies is likely to be more complex than simple linearity, but few, if any, methods exist for quantifying nonlinear structure. Our R package “Perc” presented a new network-based method, called Percolation and Conductance, which permits nonlinear structure in dominance interactions. It uses information from both direct and indirect dominance pathways to calculate consistency in the direction of transitive dominance pathways from A to B (e.g. via pathway through C, D, and/or E). Greater consistency results in higher certainty that A outranks B. It creates a matrix of probabilities that the row individual outranks the column individual. It performs simulated annealing processes to explore possible rank orders and finds the best possible rank order. By applying simple R functions, researchers will be able to quantify rank order and dominance uncertainty with the help of the package. </p>
 
+
+
+<h1 class="title toc-ignore">Introduction to Perc Package</h1>
+<h4 class="author">Fushing Lab &amp; McCowan Lab, University of California, Davis</h4>
+<h4 class="date">2020-03-10</h4>
+
+
+
+<p><strong>Abstract</strong></p>
+<p>Dominance structure of animal societies is likely to be more complex than simple linearity, but few, if any, methods exist for quantifying nonlinear structure. Our R package “Perc” presented a new network-based method, called Percolation and Conductance, which permits nonlinear structure in dominance interactions. It uses information from both direct and indirect dominance pathways to calculate consistency in the direction of transitive dominance pathways from A to B (e.g. via pathway through C, D, and/or E). Greater consistency results in higher certainty that A outranks B. It creates a matrix of probabilities that the row individual outranks the column individual. It performs simulated annealing processes to explore possible rank orders and finds the best possible rank order. By applying simple R functions, researchers will be able to quantify rank order and dominance uncertainty with the help of the package.</p>
+<div id="introduction" class="section level2">
 <h2>Introduction</h2>
-
-<p>Rank relationships amongst members of a social group are most commonly represented as an ordered list of individuals that are ranked from highest to lowest. Numerous methods exist to identify this rank order, and most methods fall under one of two approaches: (1) finding the appropriate ranking by reordering the rows and columns of a win/loss matrix or (2) calculating a cardinal dominance index which ranks individuals by the proportion of others dominated, both of which are based upon a data set of agonistic and/or submissive interactions. Such methods produce a linear rank order, whether or not the society is expected to have a linear hierarchy or whether the data fit the assumption of linearity (which is particularly problematic when calculating cardinal ranks (Shev et al 2012)). Most researchers agree that the dominance structure of animal societies is likely to be more complex than simple linearity, but few, if any, methods exist for quantifying nonlinear structure. We present a new network-based method, called Percolation and Conductance, that permits nonlinear structure to emerge via estimates of network-wide directional consistency in the flow of dominance interactions and detection of blocks of dominance ambiguity that are indicative of nonlinear segments of a hierarchy. An additional benefit of this method is the ability to quantify dyadic-level dominance certainty. Dyadic dominance potentials are calculated using multiple indirect dominance pathways in the network (via common third parties) to infer missing data in the win/loss matrix and enhance the calculation of dominance potentials from direct interactions. Greater consistency in the direction of transitive dominance pathways from A to B (e.g. via pathway through C, D, and/or E) result in higher certainty that A outranks B, whereas greater evidence of inconsistent direction (e.g. some directed pathways go from A to B whereas other directed pathways go from B to A) result in dominance ambiguity. Because the number of indirect pathways is typically exponentially larger than direct win/loss interactions, one can be relatively confident that dyads with ambiguous dominance potentials are truly ambiguous due to evidence of directional inconsistency in their network pathways rather than lack of data. </p>
-
+<p>Rank relationships amongst members of a social group are most commonly represented as an ordered list of individuals that are ranked from highest to lowest. Numerous methods exist to identify this rank order, and most methods fall under one of two approaches: (1) finding the appropriate ranking by reordering the rows and columns of a win/loss matrix or (2) calculating a cardinal dominance index which ranks individuals by the proportion of others dominated, both of which are based upon a data set of agonistic and/or submissive interactions. Such methods produce a linear rank order, whether or not the society is expected to have a linear hierarchy or whether the data fit the assumption of linearity (which is particularly problematic when calculating cardinal ranks (Shev et al 2012)). Most researchers agree that the dominance structure of animal societies is likely to be more complex than simple linearity, but few, if any, methods exist for quantifying nonlinear structure. We present a new network-based method, called Percolation and Conductance, that permits nonlinear structure to emerge via estimates of network-wide directional consistency in the flow of dominance interactions and detection of blocks of dominance ambiguity that are indicative of nonlinear segments of a hierarchy. An additional benefit of this method is the ability to quantify dyadic-level dominance certainty. Dyadic dominance potentials are calculated using multiple indirect dominance pathways in the network (via common third parties) to infer missing data in the win/loss matrix and enhance the calculation of dominance potentials from direct interactions. Greater consistency in the direction of transitive dominance pathways from A to B (e.g. via pathway through C, D, and/or E) result in higher certainty that A outranks B, whereas greater evidence of inconsistent direction (e.g. some directed pathways go from A to B whereas other directed pathways go from B to A) result in dominance ambiguity. Because the number of indirect pathways is typically exponentially larger than direct win/loss interactions, one can be relatively confident that dyads with ambiguous dominance potentials are truly ambiguous due to evidence of directional inconsistency in their network pathways rather than lack of data.</p>
+</div>
+<div id="rationale" class="section level2">
 <h2>Rationale</h2>
-
-<p>Rank order using the percolation-conductance method is based on a matrix that combines information from direct win/loss interactions with information from indirect pathways as described above to create a matrix of probabilities that the row individual outranks the column individual. Percolation-conductance finds these multi-step, directed pathways between all pairs of nodes by performing a series of random walks through the network. A simulated annealing process explores possible rank orders (from the space of all possible rank orders) – the more simulated annealing runs that are performed, a larger number of possible rank orders are explored, meaning that the best possible rank order is more likely to be found.  The starting location of simulated annealing is determined by the total wins per individual in the matrix. Multiple simulated annealing steps are required to arrive at the optimal rank order, keeping in mind that multiple rank orders may be equally good if there are nonlinear segments in the hierarchy. The heat map function (plot.conf.mat) will plot the ranking and can allow for the detection of non-linear dominance structures. A block of individuals with probabilities near 0.5 indicates a subgroup of individuals whose relationships are not clearly defined. A second metric yielded by this method, dominance uncertainty, reflects the directional consistency of information flow through the direct and indirect pathways in a directed and weighted network.</p>
-
+<p>Rank order using the percolation-conductance method is based on a matrix that combines information from direct win/loss interactions with information from indirect pathways as described above to create a matrix of probabilities that the row individual outranks the column individual. Percolation-conductance finds these multi-step, directed pathways between all pairs of nodes by performing a series of random walks through the network. A simulated annealing process explores possible rank orders (from the space of all possible rank orders) – the more simulated annealing runs that are performed, a larger number of possible rank orders are explored, meaning that the best possible rank order is more likely to be found. The starting location of simulated annealing is determined by the total wins per individual in the matrix. Multiple simulated annealing steps are required to arrive at the optimal rank order, keeping in mind that multiple rank orders may be equally good if there are nonlinear segments in the hierarchy. The heat map function (plot.conf.mat) will plot the ranking and can allow for the detection of non-linear dominance structures. A block of individuals with probabilities near 0.5 indicates a subgroup of individuals whose relationships are not clearly defined. A second metric yielded by this method, dominance uncertainty, reflects the directional consistency of information flow through the direct and indirect pathways in a directed and weighted network.</p>
 <p>The Percolation-Conductance method of quantifying rank and dominance uncertainty is computation complicated and requires researchers to have a sophisticated computational background to process the data. Our group, in collaboration with collaboraters in UC Davis Statistics Deparment, developed an R package that implements the percolation-conductance algorithm on directed dyadic interactions. By applying simple R functions, researchers will be able to quantify rank order and dominance uncertainty with the help of the package. The goal of this tutorial is to show how to quantify rank and dominance uncertainty from win-loss raw data.</p>
-
+</div>
+<div id="user-manual" class="section level2">
 <h2>User Manual</h2>
-
+<div id="importing-data" class="section level4">
 <h4>Importing Data</h4>
-
-<p>The function <code>as.conflictmat</code> is used to import raw edgelists or matrices for further analysis. Raw edgelists or matrices are records for directed dyadic win-loss interactions. The prefered R data types for <code>as.conflictmat</code> are &ldquo;<code>matrix</code>&rdquo; and &ldquo;<code>data.frame</code>&rdquo;. Raw edgelists or matrices can be imported as R data type of either <code>data.frame</code> or <code>matrix</code> to be used in <code>as.conflictmat</code>. </p>
-
+<p>The function <code>as.conflictmat</code> is used to import raw edgelists or matrices for further analysis. Raw edgelists or matrices are records for directed dyadic win-loss interactions. The prefered R data types for <code>as.conflictmat</code> are “<code>matrix</code>” and “<code>data.frame</code>”. Raw edgelists or matrices can be imported as R data type of either <code>data.frame</code> or <code>matrix</code> to be used in <code>as.conflictmat</code>.</p>
+<div id="preparing-raw-data" class="section level5">
 <h5>Preparing raw data</h5>
-
 <p>The most simple and commonly used raw data is a <strong>edgelist of two columns</strong> consisting all dyadic win-loss interactions, with the first columns being the winner and the second column being the loser. Duplicates are allowed in this two-column edgelist because multiple interactions between a pair are represented by multiple rows of the same winner and loser. Below is an example of a two-column edgelist.</p>
-
-<pre><code class="r">library(Perc)
-
-# displaying the first 5 rows of the example data.
-head(sampleEdgelist, 5)
-</code></pre>
-
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(Perc)</a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co"># displaying the first 5 rows of the example data.</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">head</span>(sampleEdgelist, <span class="dv">5</span>)</a></code></pre></div>
 <pre><code>##   Iname  Rname
 ## 1  Kale Kibitz
 ## 2  Kale Kibitz
 ## 3  Kale Kibitz
 ## 4  Kale Kibitz
-## 5  Kale Kolyma
-</code></pre>
-
-<p><strong>A weighted edgelist</strong> is also allowed as raw edgelist data. It is a &ldquo;<code>matrix</code>&rdquo; or &ldquo;<code>data.frame</code>&rdquo; of three columns, with the first two columns being winner IDs and loser IDs respectively and the third column being the frequency of the win-loss interaction between the winner and the loser. An example of a weighted edgelsit is shown below:</p>
-
-<pre><code class="r"># displaying the first 5 rows of the example data.
-head(sampleWeightedEdgelist, 5)
-</code></pre>
-
+## 5  Kale Kolyma</code></pre>
+<p><strong>A weighted edgelist</strong> is also allowed as raw edgelist data. It is a “<code>matrix</code>” or “<code>data.frame</code>” of three columns, with the first two columns being winner IDs and loser IDs respectively and the third column being the frequency of the win-loss interaction between the winner and the loser. An example of a weighted edgelsit is shown below:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># displaying the first 5 rows of the example data.</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">head</span>(sampleWeightedEdgelist, <span class="dv">5</span>)</a></code></pre></div>
 <pre><code>##   Initiator1   Recipient1 Freq
 ## 1   Angelina       Alexis    1
 ## 2   Angelina        Darcy    1
 ## 3   Angelina FirstTimeMom    1
 ## 4   Angelina          Mak    1
-## 5   Angelina      Tabitha    3
-</code></pre>
-
+## 5   Angelina      Tabitha    3</code></pre>
 <p>In addition, <strong>a matrix representing dyadic win-loss interaction</strong> is also accepted as raw data. For example,</p>
-
-<pre><code class="r"># displaying the first 5 rows and columns
-sampleRawMatrix[1:5, 1:5]
-</code></pre>
-
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># displaying the first 5 rows and columns</span></a>
+<a class="sourceLine" id="cb5-2" title="2">sampleRawMatrix[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>##             Alexis Angelina Aristotle BaldSpotMom C19
 ## Alexis           0        0         0           0   0
 ## Angelina         1        0         0           0   0
 ## Aristotle        0        0         0           0   0
 ## BaldSpotMom      6        0         0           0   0
-## C19              0        0         0           0   0
-</code></pre>
-
+## C19              0        0         0           0   0</code></pre>
+</div>
+<div id="importing-your-raw-data" class="section level5">
 <h5>Importing your raw data</h5>
-
-<p>The function <code>as.conflictmat</code> is used to import raw data of any accepted format, transform raw data to a &ldquo;<code>conflict matrix</code>&rdquo; for further analysis. &ldquo;<code>conflict matrix</code>&rdquo; is very specifically refered to a class in R. If your raw data is an edgelist of either two- or three- column, it will transform the your raw edgelist to a matrix in which counts representing for how many times a row wins over a column. Running this on a win-loss matrix creates an identical conflict matrix. This is required for all data formats to create R object of class conflict matrix.</p>
-
+<p>The function <code>as.conflictmat</code> is used to import raw data of any accepted format, transform raw data to a “<code>conflict matrix</code>” for further analysis. “<code>conflict matrix</code>” is very specifically refered to a class in R. If your raw data is an edgelist of either two- or three- column, it will transform the your raw edgelist to a matrix in which counts representing for how many times a row wins over a column. Running this on a win-loss matrix creates an identical conflict matrix. This is required for all data formats to create R object of class conflict matrix.</p>
 <p>Below is an example on transforming a two-column edgelist:</p>
-
-<pre><code class="r"># convert an two-column edgelist to conflict matrix
-confmatrix &lt;- as.conflictmat(sampleEdgelist)
-
-# displaying the first 5 rows and columns of the converted matrix
-confmatrix[1:5, 1:5]
-</code></pre>
-
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># convert an two-column edgelist to conflict matrix</span></a>
+<a class="sourceLine" id="cb7-2" title="2">confmatrix &lt;-<span class="st"> </span><span class="kw">as.conflictmat</span>(sampleEdgelist)</a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="co"># displaying the first 5 rows and columns of the converted matrix</span></a>
+<a class="sourceLine" id="cb7-5" title="5">confmatrix[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>##          Kalani Kale Kalleigh Keira Kibitz
 ## Kalani        0    0        0     0      0
 ## Kale          0    0        0     0      4
 ## Kalleigh      0    1        0     0      0
 ## Keira         0    0        0     0      0
-## Kibitz        0    6        0     0      0
-</code></pre>
-
+## Kibitz        0    6        0     0      0</code></pre>
 <p>Below is an example on transforming a raw win-loss matrix:</p>
-
-<pre><code class="r"># convert a win-loss matrix to conflict matrix
-confmatrix2 &lt;- as.conflictmat(sampleRawMatrix)
-
-# displaying the first 5 rows and columns of the converted matrix
-confmatrix2[1]
-</code></pre>
-
-<pre><code>## [1] 0
-</code></pre>
-
-<p>When importing weighted edgelist (three-column), you&#39;ll need to specify <code>weighted = TRUE</code> if your raw data is a weighted edgelist. Below is an example:</p>
-
-<pre><code class="r">confmatrix3 &lt;- as.conflictmat(sampleWeightedEdgelist, weighted = TRUE)
-</code></pre>
-
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># convert a win-loss matrix to conflict matrix</span></a>
+<a class="sourceLine" id="cb9-2" title="2">confmatrix2 &lt;-<span class="st"> </span><span class="kw">as.conflictmat</span>(sampleRawMatrix)</a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="co"># displaying the first 5 rows and columns of the converted matrix</span></a>
+<a class="sourceLine" id="cb9-5" title="5">confmatrix2[<span class="dv">1</span>]</a></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>When importing weighted edgelist (three-column), you’ll need to specify <code>weighted = TRUE</code> if your raw data is a weighted edgelist. Below is an example:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">confmatrix3 &lt;-<span class="st"> </span><span class="kw">as.conflictmat</span>(sampleWeightedEdgelist, <span class="dt">weighted =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p><strong>Directionality</strong> is very importnat when using the function <code>as.conflictmat</code> to import raw data. By default, winners (sources) are in the first column and loses (targets) are in the second column for edgelists. Row names are assumed to be the winner for a raw win-loss matrix. Values in a raw win-loss matrix describe that for how many times the corresponding row ID win over the corresponding column ID. If the directionality in your raw data happens to be opposite from the default, you could specify <code>swap.order = TRUE</code> in <code>as.conflictmat</code>. It will tell R that the directionality in your raw data is the opposite of default setting. Running <code>as.conflictmat</code> on your raw data with <code>swap.order = TRUE</code> will automatically correct the directionality when transforming your raw data to a <code>conflict matrix</code>. Here is an example,</p>
-
-<pre><code class="r"># displaying the first 5 rows and columns of the raw win-loss matrix
-sampleRawMatrix[1:5, 1:5]
-</code></pre>
-
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># displaying the first 5 rows and columns of the raw win-loss matrix</span></a>
+<a class="sourceLine" id="cb12-2" title="2">sampleRawMatrix[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>##             Alexis Angelina Aristotle BaldSpotMom C19
 ## Alexis           0        0         0           0   0
 ## Angelina         1        0         0           0   0
 ## Aristotle        0        0         0           0   0
 ## BaldSpotMom      6        0         0           0   0
-## C19              0        0         0           0   0
-</code></pre>
-
-<pre><code class="r"># use swap.order = TRUE when running as.conflictmat.
-confmatrix4 &lt;- as.conflictmat(sampleRawMatrix, swap.order = TRUE)
-
-# displaying the first 5 rows and columns of the converted matrix
-confmatrix4[1:5, 1:5]
-</code></pre>
-
+## C19              0        0         0           0   0</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co"># use swap.order = TRUE when running as.conflictmat.</span></a>
+<a class="sourceLine" id="cb14-2" title="2">confmatrix4 &lt;-<span class="st"> </span><span class="kw">as.conflictmat</span>(sampleRawMatrix, <span class="dt">swap.order =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-3" title="3"></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="co"># displaying the first 5 rows and columns of the converted matrix</span></a>
+<a class="sourceLine" id="cb14-5" title="5">confmatrix4[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>##             Alexis Angelina Aristotle BaldSpotMom C19
 ## Alexis           0        1         0           6   0
 ## Angelina         0        0         0           0   0
 ## Aristotle        0        0         0           0   0
 ## BaldSpotMom      0        0         0           0   0
-## C19              0        0         0           0   0
-</code></pre>
-
+## C19              0        0         0           0   0</code></pre>
+</div>
+</div>
+<div id="examining-the-network" class="section level4">
 <h4>Examining the network</h4>
-
 <p>Before computing the dominance probability and finding the best rank order, you want to know whether or not long pathways are present in your data, and if present, whether or not these long pathways can be useful for gathering additional information about rank relationships.</p>
-
 <p>You could find pathways of <strong>particular length</strong> that <strong>starting</strong> at a particular node (ID). For example,</p>
-
-<pre><code class="r"># Testing findIDpaths.R
-pathKuai &lt;- findIDpaths(confmatrix, &quot;Kuai&quot;, len = 3)
-# Displaying the first 5 rows of pathKuai
-pathKuai[1:5, ]
-</code></pre>
-
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="co"># Testing findIDpaths.R</span></a>
+<a class="sourceLine" id="cb16-2" title="2">pathKuai &lt;-<span class="st"> </span><span class="kw">findIDpaths</span>(confmatrix, <span class="st">&quot;Kuai&quot;</span>, <span class="dt">len =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb16-3" title="3"><span class="co"># Displaying the first 5 rows of pathKuai</span></a>
+<a class="sourceLine" id="cb16-4" title="4">pathKuai[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, ]</a></code></pre></div>
 <pre><code>##      [,1]   [,2]       [,3]     [,4]    
 ## [1,] &quot;Kuai&quot; &quot;Kalleigh&quot; &quot;Kale&quot;   &quot;Kibitz&quot;
 ## [2,] &quot;Kuai&quot; &quot;Kalleigh&quot; &quot;Kale&quot;   &quot;Kolyma&quot;
 ## [3,] &quot;Kuai&quot; &quot;Kalleigh&quot; &quot;Kimora&quot; &quot;Kibitz&quot;
 ## [4,] &quot;Kuai&quot; &quot;Kalleigh&quot; &quot;Kimora&quot; &quot;Kioga&quot; 
-## [5,] &quot;Kuai&quot; &quot;Kalleigh&quot; &quot;Kimora&quot; &quot;Koppy&quot;
-</code></pre>
-
-<pre><code class="r"># When there&#39;s no pathway starting at a particular individual, you&#39;ll get an output like the example below: 
-pathKalani &lt;- findIDpaths(confmatrix, ID = &quot;Kalani&quot;, len = 2)
-</code></pre>
-
-<pre><code>## no pathways of length 2 found starting at Kalani
-</code></pre>
-
-<p>You could also use <code>transitivity</code> to find out information on transitivity, a measure of how consistent or inconsistent the flow of information is through the network as a whole.  This procedure looks for the number of triangles (e.g. A<U+2192>B<U+2192>C<U+2192>A) and determines whether or not they are transitive. </p>
-
-<pre><code class="r">conftrans &lt;- transitivity(confmatrix)
-conftrans$transitive      # number of transitive triangles
-</code></pre>
-
-<pre><code>## [1] 14
-</code></pre>
-
-<pre><code class="r">conftrans$intransitive    # number of intransitive triangles
-</code></pre>
-
-<pre><code>## [1] 4
-</code></pre>
-
-<pre><code class="r">conftrans$transitivity    # transitivity
-</code></pre>
-
-<pre><code>## [1] 0.7777778
-</code></pre>
-
-<pre><code class="r">conftrans$alpha           # alpha
-</code></pre>
-
-<pre><code>## [1] 6.468627
-</code></pre>
-
-<p>The function <code>transitivity</code> allow estimation for <code>alpha</code>, which is a value used in the conductance procedure to weight the information from the indirect pathways.  The higher the transitivity of a network (the higher the alpha), the greater the weight the conductance procedure will give the indirect pathways.</p>
-
+## [5,] &quot;Kuai&quot; &quot;Kalleigh&quot; &quot;Kimora&quot; &quot;Koppy&quot;</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co"># When there&#39;s no pathway starting at a particular individual, you&#39;ll get an output like the example below: </span></a>
+<a class="sourceLine" id="cb18-2" title="2">pathKalani &lt;-<span class="st"> </span><span class="kw">findIDpaths</span>(confmatrix, <span class="dt">ID =</span> <span class="st">&quot;Kalani&quot;</span>, <span class="dt">len =</span> <span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## no pathways of length 2 found starting at Kalani</code></pre>
+<p>You could also use <code>transitivity</code> to find out information on transitivity, a measure of how consistent or inconsistent the flow of information is through the network as a whole. This procedure looks for the number of triangles (e.g. A→B→C→A) and determines whether or not they are transitive.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">conftrans &lt;-<span class="st"> </span><span class="kw">transitivity</span>(confmatrix)</a>
+<a class="sourceLine" id="cb20-2" title="2">conftrans<span class="op">$</span>transitive      <span class="co"># number of transitive triangles</span></a></code></pre></div>
+<pre><code>## [1] 14</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">conftrans<span class="op">$</span>intransitive    <span class="co"># number of intransitive triangles</span></a></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">conftrans<span class="op">$</span>transitivity    <span class="co"># transitivity</span></a></code></pre></div>
+<pre><code>## [1] 0.7777778</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">conftrans<span class="op">$</span>alpha           <span class="co"># alpha</span></a></code></pre></div>
+<pre><code>## [1] 6.468627</code></pre>
+<p>The function <code>transitivity</code> allow estimation for <code>alpha</code>, which is a value used in the conductance procedure to weight the information from the indirect pathways. The higher the transitivity of a network (the higher the alpha), the greater the weight the conductance procedure will give the indirect pathways.</p>
+</div>
+<div id="finding-rank-order" class="section level4">
 <h4>Finding Rank Order</h4>
-
-<p>After transforming your raw data in an R object of <code>conflict matrix</code> class, we will use the function <code>conductance</code> to find all indirect pathways of a particular length (defined by <code>maxLength</code>) and update the conflict matrix. The maximum length of indirect pathways should be decided based on the data.  We use a max length of 4 for our dominance rank. This yields the dominance probability matrix which represents the probability the row outranks the column. Values in the matrix are from 0 - 1, with 0.5 being the most uncertain. If a value is less than 0.5, the corresponding row ID is more likely to lose against the corresponding column ID; if a value is greater than 0.5, the corresponding row ID is more likely to win over the corresponding column ID.</p>
-
-<pre><code class="r">DominanceProbability &lt;- conductance(confmatrix, maxLength = 2)
-</code></pre>
-
-<p><code>DominanceProbability</code> is a list of 2 elements. The first element, named <code>imputed.conf</code> is the updated conflict matrix which incorporates information from indirect pathways from the original conflict matrix. Comparing the original conflict matrix with the updated conflict matrix will show the information that is gained through the indirect pathways: </p>
-
-<pre><code class="r"># displaying the first 5 rows and columns of the original conflict matrix
-confmatrix[1:5, 1:5]
-</code></pre>
-
+<p>After transforming your raw data in an R object of <code>conflict matrix</code> class, we will use the function <code>conductance</code> to find all indirect pathways of a particular length (defined by <code>maxLength</code>) and update the conflict matrix. The maximum length of indirect pathways should be decided based on the data. We use a max length of 4 for our dominance rank. This yields the dominance probability matrix which represents the probability the row outranks the column. Values in the matrix are from 0 - 1, with 0.5 being the most uncertain. If a value is less than 0.5, the corresponding row ID is more likely to lose against the corresponding column ID; if a value is greater than 0.5, the corresponding row ID is more likely to win over the corresponding column ID.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">DominanceProbability &lt;-<span class="st"> </span><span class="kw">conductance</span>(confmatrix, <span class="dt">maxLength =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><code>DominanceProbability</code> is a list of 2 elements. The first element, named <code>imputed.conf</code> is the updated conflict matrix which incorporates information from indirect pathways from the original conflict matrix. Comparing the original conflict matrix with the updated conflict matrix will show the information that is gained through the indirect pathways:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="co"># displaying the first 5 rows and columns of the original conflict matrix</span></a>
+<a class="sourceLine" id="cb29-2" title="2">confmatrix[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>##          Kalani Kale Kalleigh Keira Kibitz
 ## Kalani        0    0        0     0      0
 ## Kale          0    0        0     0      4
 ## Kalleigh      0    1        0     0      0
 ## Keira         0    0        0     0      0
-## Kibitz        0    6        0     0      0
-</code></pre>
-
-<pre><code class="r"># displaying the first 5 rows and columns of the imputed conflict matrix
-DominanceProbability$imputed.conf[1:5, 1:5]
-</code></pre>
-
+## Kibitz        0    6        0     0      0</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="co"># displaying the first 5 rows and columns of the imputed conflict matrix</span></a>
+<a class="sourceLine" id="cb31-2" title="2">DominanceProbability<span class="op">$</span>imputed.conf[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>##              Kalani     Kale Kalleigh      Keira    Kibitz
 ## Kalani   0.00000000 0.000000        0 0.00000000 0.0000000
 ## Kale     0.00000000 0.000000        0 0.00000000 4.0557534
 ## Kalleigh 0.05575338 1.000000        0 0.11150676 0.2230135
 ## Keira    0.00000000 0.000000        0 0.00000000 0.0000000
-## Kibitz   0.00000000 6.055753        0 0.05575338 0.0000000
-</code></pre>
-
+## Kibitz   0.00000000 6.055753        0 0.05575338 0.0000000</code></pre>
 <p>Examining information gained through indirect pathways will provide you information to decide what is the appropriate <code>maxLength</code> for your data. You could examine the information gained through indirect pathways by substracting the original conflict matrix from imputed conflict matrix. The information gained could visually examined by generating a corresponding heatmap using the function <code>plot.conf.mat</code>.</p>
-
-<pre><code class="r"># substracting the original conflict matrix from imputed conflict matrix.
-informationGain &lt;- DominanceProbability$imputed.conf - confmatrix
-
-# examine the first five rows and columns of the informationGain
-informationGain[1:5, 1:5]
-</code></pre>
-
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="co"># substracting the original conflict matrix from imputed conflict matrix.</span></a>
+<a class="sourceLine" id="cb33-2" title="2">informationGain &lt;-<span class="st"> </span>DominanceProbability<span class="op">$</span>imputed.conf <span class="op">-</span><span class="st"> </span>confmatrix</a>
+<a class="sourceLine" id="cb33-3" title="3"></a>
+<a class="sourceLine" id="cb33-4" title="4"><span class="co"># examine the first five rows and columns of the informationGain</span></a>
+<a class="sourceLine" id="cb33-5" title="5">informationGain[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>##              Kalani       Kale Kalleigh      Keira     Kibitz
 ## Kalani   0.00000000 0.00000000        0 0.00000000 0.00000000
 ## Kale     0.00000000 0.00000000        0 0.00000000 0.05575338
 ## Kalleigh 0.05575338 0.00000000        0 0.11150676 0.22301352
 ## Keira    0.00000000 0.00000000        0 0.00000000 0.00000000
-## Kibitz   0.00000000 0.05575338        0 0.05575338 0.00000000
-</code></pre>
-
-<pre><code class="r"># generating a heatmap representing information gained by using informatio from indirect pathways.
-plotConfmat(informationGain, ordering = NA, labels = TRUE)
-</code></pre>
-
-<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-12"/></p>
-
+## Kibitz   0.00000000 0.05575338        0 0.05575338 0.00000000</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="co"># generating a heatmap representing information gained by using informatio from indirect pathways.</span></a>
+<a class="sourceLine" id="cb35-2" title="2"><span class="kw">plotConfmat</span>(informationGain, <span class="dt">ordering =</span> <span class="ot">NA</span>, <span class="dt">labels =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAABhlBMVEUAAAAAAA0AABcAACEAACgAACoAADoAAEkAAGYAAP8ADQAAF2YAISAAKpAAOioAOjoAOpAAWGYAZmYAZoEAZpAAZrYNAAANABcNACgNADoXAAAXAGYgAAAgADohAFghAGYhfNsoAAAoAGYogf8qAAAqAGYxABcxAGYzIcszM/86AAA6ACg6ADo6AEk6AGY6KCg6MlE6OgA6OmY6OpA6WGY6ZmY6kJA6kLY6kNs6nP9JAABJAGZJtv9RDQBRMgBRvP9YAABYtv9lQZllZf9mAABmACBmADFmADpmAGZmOgBmZmZmkJBmnJBmnZBmtttmtv9m2/97fDqB//+QMQCQMgCQOgCQOjqQkDqQkGaQkNuQvJCQ27aQ2/+ZY2WZmf+2WAC2ZgC2Zma2tma225C2/7a2/9u2///LgzPLy//bZhfbkDrbtmbbtrbb25Db/7bb/9vb////AAD/IQD/QQD/YwD/gwD/nTr/pQD/tmb/vFH/22b/23v/25D//5z//7b//7z//9v///+zy1bvAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAPZklEQVR4nO2diZ/bRhXHBYRkudNSQ0nDTYGYZSGUw5TlaDAkpTQuIRsKNeCkGwMG0nCkOIkx9n/OHG9Gc+rpltZ+v08bybKt4+uZN795M9ImW1Kmkq5PoO8iQIgIECIChIgAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIECIChIgAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIECIChIgAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIECIChIgAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIECIChIgAISJAiAgQIgKEiAAhIkCICBCilgAlztLbEFviH2hYBAgRAUJEgBARIEQECBEBQkSAEDV/nKRJlTt0odMvdrWrozn/dzixXnsfqHCEQsIA/SOoxgGtDqfW61qPUEj9BLS+PrVe13uEQuoloPVY1K8lq8sDAUit/SZJRlTFju6fDPgKx7Q8PwVgfG042i4P5gagMiGxoJCw2wWgw6vPnYzgBatrwIOvscDEXvWrBP0zqEYBsfZLxujVMElECTLXCJC4/sXBXFCSJShdI0AAaMPCEAs325koN+laWUBXQLnf0Nt7CohVqsHmdpJ872Ty+BPHmxO59vytMwmInf4BnDKPFRNrS67Tjyi3ZewS0L+Csr41G/D/uKA5NrbkO/2IclvGfgPilwCnvrz4kJWeibEl3+lHFLKM67FVOPP6oAqAEB+EA3J+Z3ZJzpYKgDzLyPBvF+xncM4S3VXrJciA6uBgp18bIN8yurUu7xG6rGL2OQsDUxcg3zLyFbbmniW6q94AWvCTr6+K+ZYxGKeT6PVfA6k+knr9SEl981FEKKB/BxUJ0uJq7C3bnIACabLV4YtgGd89dwuM4tPLx6HefK8BGY268iwlmvmA55GAhGWURpFv+/rLfg3rOyBoeWej7UyE7onbFucF5HieUHU6i1UMlWO7R8EPBTxPanugQ/8cL0T3hFdXuwY1CQjxQXUDAgoBQJ7nSW0P0FskE1bfRCfWOcIOlaDA5QmFPQ9UPN6hZ+6Qe9DDac+CdPhrVUoQlFiHU8jzaNvD1hayFwMZjx0GFFPY8wALowSFARU5nYLqFSAjTfb4+VvC9nwRwvWTS8ciBu0BIFbJLj6cuW1ZmibTybHV0duHb4257YFW7FmddS12EZXUOiDWQrF4sh6HW3utUK/U76UGj1Cv2gbEfRAPuItwY6aV+iJphR5/8o3VN9iKdEnFLqKSMED/CSqWclVdBtb4pEkbzwdxQJHWXkv7ImWFvszIfF/nLNWuux84zAHI7Hmtx/zCl9ZvHCxBMy/rZUv7otQKqZ5amXxQeVUvQVZvPvnOkeyWRQ8hY9AiCRtqLe2LUiukC2eJfFB5lQQUySj+TWQTN3esK/BbscA1ukp9kbZCogWTLqnYRVRS9RJktzfy1VWTQPHTVzb65u0L8//9UFgh6YuUS4pdhOeo3Q1XYoruAQP0p6CyAYmf+UaFUQ0B6G3e7eK+6PNghfi4Ibgk9yyjl9dPQFzRlCu/xEBfzJK5y81JdC6efxG9BGQnWFFAM6R9h51IEyQyHr+Qs6ZOualeQkrOOcvo5fUBkJ1gVYFi9VLMByEWWu4ETJAAxH33xMgwmtlcx6M0AQjxQTkApSnXrWp9kmjKNZYwswEZJkhUsdkgBRRwUD0vQZgco+h1FHylJggALVJA/rhqt4B+H1SVzipmEbe2CZIlaKQABbsouwQollEUUjmPXx5+YS7KGsQgVqKgq7EMOszEvVyVOLzmXS8oCspNObZfgrKkBsd0cshsxdhaclN4BN8o7hOgaNIn6wi7BCjLKNr+57VhMmB904HooXIz/a1XY/mgXQKUZRR9/8Piz+FUJIEO5rxti+SDmgSE+KBrQVUJ0hlG0fU/8L9KCcXzQR2WoByA/IxixiTOTKPo+h/4f5mOiUXyQf0G5GcUM2Z3ZBpF1/84JSieD+o1ID+jmDk/KMso6sExG5CKQfF8EApIXa8Kot6hw4MT5QFlZhSzZpjlMorPHL7IAL0+vHn7BQEKWjGerAzng/oHyLkqJ2FWdQqeO5sKU5eAvhpUC4CKGMZ9BKQNI9QvmEC1tY1ibh9UARDig3BAfkYxGqSZCcqMQSmg1DBChIYJVI5RVEfodQnyM4qV79UwDSMQh+kv/N0yzXyngPyMYmwSJ9ueI59oG0ZwiTCBqqxR7BQQJgsQFzLqbBtGuwQhA4eKh7fH6Bsx6S9ggD4QVJV0B3TnvaKkTNAEVp9eHvgxqOjAIfpGTB0CkvI79Yb5gdUvDexW7Nnr06IDh+gbMXUKaBkqQDlun8MnUO0CoEXCM6gBpVOmdM9CNIWLgcidvf93w+TCPOKDvMtyVQEQ4oPqBTSL0dm6U8kP1CRX1nSJ3NlPkuR9n55GfJB3WdHrzavcJchtQKVKt2I5s2WQ3RDtutWxF3vpVStWKyBRv2L5IG1+jPzYYrBdjLYmoOwJVP0EZOQPYTVjjuI2mHXnsqZMQX5sfeP+nakJqH8+KAcgo2MBqxlzFLlsfnqrzJY9c3TK4sy7ybHstLz20kMTUE4fFE7SXEsThXqDexaFnTQOyOiaqtWsOYqgiA9i8C7wOzTe82P5eimfU6AB5fRB3QMKZxRhNXuO4iY8Ompy8udjIWepVjoA9NOgIvkgWI3OUYS+WOb8DtsO/WqwufMm/wYswBmdcUDROYrrMTq71bJDq+G5W5sT3hEbwQKckd51xCjWCQgximUAicsrm1F07RDMDzIWfrXrdwkKBOlKgBw7JMgsL74jFw+lMzpTgPxmPmuOIg7IsUN2CQJndLYAGRlFWM2Yo5gPEB88XI9fP7p3MN/cTl5h4QjmcnJn9M2vRG/JVJcdbnuv+AOnj9wPuKBQQH8IqqH5QVx68hR06p9e/jbv4MI8qvDI7F4BMiQq2c9/JIDopivkjPYY0Hp8E3r0t1+QyaCPDgKt2N4CYpZokwISzui9b5hDbs7AYROAEB/UKSDTEqX2gUqQkjk8pkah4YGczhE6BPTnoNoL0toSrawHcjpH2GdA0hJNOCjjgZyRI7gcrrkbouRcYHnPPg8gP6NY6kGTxsChs2XAneenfjBPn7N0tgD5GcVSkxeyZ01lJob6DcjvrJZ70GT2rKneAopszswolptApTNlkBRTTdcykcOI4tFTRoNvnEejgBAfhG+uD1A6a8p4VBDf0ZLf8DNQM137FYPwzbUBUrYQvLMCBPnX9HHtewtIP4NKJsX0bMexUbfOIqA6g7R8KIxMihks0rqFAGpA1QHV2szLOxXEcCG4Q3Gf4YFZ4fwn6yRNCgGU41t+RrHEgyZNWwhJMeYOv3sjbcVk0YGNoVN1D+duiC3xDzSs4sfJN1wYOcw+APJGBoscZvcBrYY5nl4RP8zuA6p4GAKEHIYAIYchQMhhCNDOiQAhIkCICBAiAoSIACEiQIhaAMSn1soZtAd89Ozi32WyX7xeyOXpmPeAIWNivmF/wNjTqdpj02ffbgnanIz4VMaLD+ApKusxfzjKbKT/Qke6wV5uIfPkaJbrLttKaheQvL91dXR6XT9MZ31jLl7LZ+IbG6ylKCh88NYmUio3VUwtAYIqdV+UoJmYD8vFJ8remUpgq+HHxM1VYsN9ZzlXf6Fx9mGzamFPBq9B7QDSDyZSzwBL4DJXh/wBpyMxzMKno29hg7vkj7sSO3hy6VhVSq5dqWJlHg4X3VNa59pQS1Uskqf1wKEkN7rOtaS2qpg17KIaaaZj+f51dcP5bGJ/4VzqD+SNNqruKaPQ9Kl3ZBTFyNxswO8GNsSno8N16w98RMQeGJJLy2Gu5/LWoW4A6RLj3zxif+D0Z5+dW1+wP9CC2opBtjGWU0VYc7+MPCpkoz7wlw/JDyygBOkiVmr0qYRaa+YdYzzj8WX65JLbcRCxhlObiZgj/i6FFbTE4PDL5qtm1Voz7xvjkHTJUV8Mh5qda8Vcgxy9PDfWREJNCw5aqaUYZBvjz3m9e9WK6xKkqpq6iV19QDvoJQ9o+E2kldVtPkj17t/RNQvAKFAPxlZUHxjfnMiA1vQptgho/Vu1dteoQUbv3mvF3ar25DPq9V32DZiY1LDaSJiN7TaHd0qham2s3r3xyAM3WEMzD51Ttof74slpoT8yULParGJyoj6fH6Kq1kO3d697EFDV1mNZqyzIYobJkt85k/95oKXVagzik9OWItRC1fIqiN+s25lEvYfW1K6Tvnf+aiInE7MS9OBVVUHuZvcgzEziEvbQmtp10voBVbJqvSLW/zs0nPRiYGf5dSbxg+CwYQ/r3Urap2kucxZsGpPSTzpZDJVJ3Pz6whyCtrmHnUnaCyf9ltOaqYjycaP5FzEo7Ae2PN/q7GE3mnku5aS5jBZJxCQVmMUjUjgIcwN832v2pXYmaR/VUj6mMq1qomuhNhjtv+7lg3YpaR+oMalEREkbb7juc6235lG14qTtGuMkqM3mX8tqzTMJN602qliotXLkPZ8y5AeMmLRVFrtxtRKDcvhfXtUs/yNbcxmc/ygIOYSDg/X1q50g7flflaPm625n1twA3fyvhQn7g/X1q62xefvHTnPT1lY/1qjm/a9+D0NZ7IY79G018/Z9ZOEB5ID/0Ul8N0jpwfqmvWIH+aBtdAA5K5r7d+q1o46MoumsDdnRXFU5P0i12O73bI6i7X8CVS77jQbUAaDM39+KNdEql8NZ1aUuAGX+/gs7+RExUO1lFruoYrHfPxDNownE1jKLncSgAr9/+I/bZr1Rs7oJ0gV+/2jz3lK731Erluv3D1Q55I0G1FUz35XvK6xOWrH2fv/q6plR7J8IECIChIgAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIECIChIgAISJAiAgQIgKEqFNATc/tqUMECBEBQtQTQPwWDfGnpoYwO3whN6yvv9nx4FA/APHBej6xV0xr4C8W/Dnnw1E6064z9QLQRvxFiuX56VLPcxUbxJ+37e70hHoBSM2HmazHkpAcuhcbWnqGSVQ9AsRhiEmtE7hrjK0RILHUJUhuZVVNTf4gQGKpY5B4xaBoLgRIrqhWTDDi//BWjBelfQckI80o9UF8KQrSQs6O2XNAZ0EECBEBQkSAEBEgRAQIEQFCRIAQESBEBAgRAUJEgBARIEQECBEBQkSAEBEgRAQIEQFCRIAQESBEBAgRAUJEgBARIEQECBEBQkSAEBEgRAQIEQFCRIAQESBEBAgRAUJEgBARIET/B/zwJAzZ1HeiAAAAAElFTkSuQmCC" /><!-- --></p>
 <p>As we could see from the heatmap, using <code>maxLength = 2</code> does provide us more information than the original raw conflict matrix that we imported from the raw data. In real analysis, you may want to consider using <code>maxLength = 3</code> or even more and repeat this diagnosis process to examine the information gain. This will allow you to have a better idea on what is the appropriate <code>maxLength</code> for your data.</p>
-
 <p>For example, if you want to examine whether or not <code>maxLength = 3</code> provide more information than <code>maxLength = 2</code>. Here is an example:</p>
-
-<pre><code class="r">DominanceProbabilityLength3 &lt;- conductance(confmatrix, maxLength = 3)
-informationGain2 &lt;- DominanceProbabilityLength3$imputed.conf - DominanceProbability$imputed.conf
-plotConfmat(informationGain2, ordering = NA, labels = TRUE)
-</code></pre>
-
-<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-13"/>
-As we can see in this heatmap that using <code>maxLength = 3</code> still gives you some more information. In real analysis, you may want to repeat the analysis and try <code>maxLength = 4</code>. In addition, you may also want to consider your alpha value to decide how much you want to trust those long pathways.</p>
-
-<p>The second element of <code>DominanceProbability</code> the dominance probability matrix, named <code>p.hat</code>. Here&#39;s how you could pull out the dominance probability matrix:</p>
-
-<pre><code class="r"># displaying the first 5 rows and columns of the dominance probability matrix
-DominanceProbability$p.hat[1:5, 1:5]
-</code></pre>
-
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">DominanceProbabilityLength3 &lt;-<span class="st"> </span><span class="kw">conductance</span>(confmatrix, <span class="dt">maxLength =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb36-2" title="2">informationGain2 &lt;-<span class="st"> </span>DominanceProbabilityLength3<span class="op">$</span>imputed.conf <span class="op">-</span><span class="st"> </span>DominanceProbability<span class="op">$</span>imputed.conf</a>
+<a class="sourceLine" id="cb36-3" title="3"><span class="kw">plotConfmat</span>(informationGain2, <span class="dt">ordering =</span> <span class="ot">NA</span>, <span class="dt">labels =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAABtlBMVEUAAAAAAA0AABcAACEAACgAACoAADoAAEkAAFgAAGYAAP8ADQAAOioAOjoAOmYAOpAASUkASbYAWGYAZmYAZoEAZpAAZrYNAAANABcNACgNADoXAAAXADoXAGYgAAAgADogAGYhAGYoAAAoADooAGYogf8qAAAqAGYxABcxAGYzIcszM/86AAA6ABc6ACA6ACE6ACg6ADE6ADo6AEk6AFg6AGY6MlE6OgA6Okk6OmY6OpA6WGY6ZmY6kJA6kJw6kLY6kNs6nP9JAABJADpJAGZJtv9RDQBRMgBRvP9YAABYZjpYtv9lQZllZf9mAABmADFmADpmAGZmOgBmZmZmkJBmnJBmnZBmtttmtv9m2/+BZgCB//+QMQCQMgCQOgCQOjqQe3yQkDqQkGaQkNuQvJCQ27aQ2/+ZY2WZmf+c//+dOgCdkDq2WAC2ZgC2Zkm2Zma2tma225C2/7a2/9u2//+8kDrLgzPLy//bkDrbtmbbtrbb25Db/7bb/9vb////AAD/IQD/QQD/YwD/gwD/nDr/nTr/pQD/tkn/tmb/vFH/22b/23v/25D//5z//7b//7z//9v///88DEOlAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAQU0lEQVR4nO2djZ8bRRnHV6x3pCqnvAQVWxVRsMa3q2cVFWNrxQrEa0UaxLsq1litgbYXMCocvoEpjTH7H7sz88zuvO6z2U1m93LP7wNkd5PsZr/MPG8zOxfFpFxFdf+AposAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIECIChIgAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIECIChIgAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIECIChIgAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIECIChIgAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIECIChIgAISJAiAIBivSrRbmHi30qkAgQIgKEiAAhIkCICBAiAoRo9VeLVqJy1yzz80vddO1XwAC941QAQNOdEftvp6/tWx+ocIViajag6fZA21/qFYqp0YBmuwNtf7lXKKYmA5r1eP+aJDavzQHJrd9EUVclVsEyokLMbhFA8/2oNdI2kxvZGGhvxCUAHey32QbDNNkYADC21enGk9aoITbo705p3xq22T/KJrMcyR2ob+BXMjXdPvfIfhd2kr4GPNhWcvpk78gAYoYi+/XKprJX4EqmmP8SNnraYQ2SnUnZajogpVsq1lTZHG8dGma2jBcbJ+1w+rXPjpLT3H30IuPFtj75ymKAbggZuzeMw+53b1RvQS5A087GwPRDZQDNEzM02XhiNNy4/tXPjXi33VgLQLG0ohUBJaTb870o+sH+56/vjBKjn2z1mwXoH07hgMCslgekXcBy+LOe6iCRK9QMaEVGOpPD4c/3+8zKpafOj4OqAULiIByQ7eaZrZg+fVjNzWdyOHwzzM6/Qs0tSDb3YTfdHEf8Re8H5QHZDp9t8FhU/7GeE9QNqKCq2CBw+MLNOw00v8JJXfL4m0Lyxz+v6wwIPvUeqGBWFf3TqZUBchQ5pttPgsN/98QrzM0nx+6dvugqdzQUkJ2LsR7QFy+KJdW/041dchQ5BCDu8IWbZ8fOnrd7WGMBWUYavE08aWunUnfAbzsBGUUOV3c6Ul3MdvOTpNkwRzzUWol+pYkdxsCdmzFPFvZAOvYIa0S3eBuVpwatBBDi5j2A0Fwsuc35Na0TmJ5PyODkiHmysAfojaN+0t8ciBvagrzJ6mz3nGooihlpZ8wD54XGmUCCikcTAP3LKRRQ6pUvLxZJu2KeNOxJtsai90LF4+gCGsuW48/Fkk62dTg0fZkZ8ySJaXLo7qMX4c13N/7AW5AbUP69lFN1QI5cbJyaBy+gxL6wXtgzCGVFjrS0Md25/Y1n+2CupQ06SoDcJdc4TlMy15VYHMS6y9gy0nrMwwCdvTBImhsUmJLe9tDu4GgBsnKxIfdPfZmSua7EW0ICyOPtU2VuP/X0028/3hqJIGCxeyknDNB7TlVONWQLGmaRtlOp2wdPf/cTL087LTm+kZ66xmGfFQECGzSO3AF1qtTtS0//VBR94Cf8reLljkpaQgvy5mK542I8VLTzKUOp2888vUjXOguUOyppCYC8udgSCmaZ2xcmGQBBELDYvZRTdUDeXKxyyVVGiVf3Nkf/+/EX2L6Ii2QQgNzLC6BiBTOILs3DGKA3nSqUi+UW7Zkbd+RiNqDbLKtgbv9x8PRsUAOCgAYD0m+jxMDhEPHvxum4F8uOen6ssd9kQNJs+ABZIbRLaRDEE/qfiykdd1jMOIFIS57a7YmXAwhx8+UA8VwsHxDi38XpIAjigFhi0lcKaEM0UGxIC/LmYnlGer5v3Z4tNQjiXWzYzgA5QsyGAvLmYrlufoKFiLEaBAGgcQZo7AjBawH0e6eK5WI542K+iqIAAxnrL7afGElrJlpQVwJy5nCRvDm41zNueYgATRnJONtCOUAFVfw7cmgjrX2ADUpaFB/lGKh5mHqF4wQoM2BJEKR6MTbH4yoPouxAsaGA7FxMNgL/uFhuoKi79xc7UTs5U5ufj8WK37niK3c0FJBlpJmJ4XM5/eNiuYGi7d6T7rU94Clea8RMt6fcsRJASBz0vFOYm4++twNm2wMoN1A03Tv8Kyse4CMdyWodLcgDKD8X+ytPM/LHxXK8vOne4d9JNqLhKXc0CJB6O65UQ2z5x8VyA0W1xuFoQf5yxxEDlDsulhcoSvfOpi3M91/qXN07xUBJG+Qvd8gBMbCUkggcleNi0pDCt+SnjFssONOnCiAmfy5WIFB8kAHa+/RAtiLwYqz3ussddQByt1LESOOACsnIdlE1FJDLzceyH/jGxQpJjYeg+cDsjtgdBzUUkD1HUdpZ/7hYQUBZPAQGCEZWPXHQSgAhcVABQAWVfScJgnJtUApIiYegu8HsDn4W24s1tAUVVIkWpMRDEATB7A5PHNRQQN5czDculjSfAvVEPR7SW9Biwz7F6kHud9FpwCedKpaL+Qpm0L/co87Sx/dh897ptm2Dig37GPfsQeD+8BIBeXOx/HExSOetpiSLQdnmF9u6F3tod1Bs2KdOQEVysdxhH5Cd1JvBjz3K4w2NmgTIfUdGqoEAmrgakDLhJQ2ceT8dt3lp6EPXO9HmyIiDkNkd1QAhbn5VgJIYKXJWPPR5ri05hzNxXbw0dCmKPviZgREHOa+wLECek8prftmpioCGPjqxY8KLyOj1xJ59sCFeDAfkzcW8Rjq/WiaDH6X8M27H426sAlpo+kvNgLy5mH9cbOzKpEAQ/NzeuZ1svP/YDznqywfXBiogJA7SA0QZN8qJvbLiAxGh/BR8V4aRRetBBQB5c7G858Wc2Wb6zfn+gzt3knjwK7B+wPDFpw9VQEgc1DBABWV9Rx/0SI9CoLg5yso/orymAELioJCAXnBqabmYd3BD9/bXdw6uvcqa3Fy8gOP3XaFhgOxcTJmq6BsXg0jaO0lR9/b3JUEQyzO68AKOPz21EaosFRASBxUAZBtpePGNi0Eulju/Qyt1dO57GSYvKC92iN3QFmS7eXnENy4266GzWy1vz8lMtt4WL4fC8TcYUG4uBi9542Ko1FIHP5nWgsDxNxiQcStOQGWeF9MBsdGzWe+lnVut0Xwveo49pCcmmjHH/60vWV1MBndwy/LXwq3KUpgxY1cCAqoGZKw2GJmBpR1eegGVeV5MB8RmdkDOeu/0d1l6ApM83ONqRw0QO7KktTvi2c+e5UBS12Wb6MYC8hvp5QGa9a5Cwrp3StQ6PtJW0zz37I7lAELcPA7I6+Yrj4ulgJKQaJ4BYjXpxPE73HwzW5AjF9OX8KgMSC2AZC2zIYD+7FSYYR+QOvojB1lhKTPjCscCkDKqoR6Roz/bT46yNU7MKxiBjxRgM2OVk7oA3xkD1BIAeXOxUusoKqMa6hEREvWnT7XkUmZHB5A3Fyv1vJg9pSMLiRKj9qkfjbI1To4GIK+bL/e8WFrngJKGNDxidU9YtEMx13UD8hwukosVGRdzAcqmdCiLLLATTdhc8racZeaIg1YCCImD8MPLBiSdOkQ+EhBUz7JlSpvdglYIKF29Q5Q00gGkntK3jjUg6dShpKGwyPrWkQK0fCMtZwnzsQw+n6M1ghWGlQ5nrmpRIRTNU3VAK3DzwqlDSSPx7d+/nHmxEcwf4QeNX7USIYAKfMubi1VdR9FV0kAV6VeLcg8X+1QgLX41a1xngcscA0BsEZPylzkGgKpdhgAhlyFAyGUIEHIZArR+IkCICBAiAoSIACEiQIgIECIChGj1gNicJDG7r8XGhrb+tjOawO5YvN7psQLBdOemfvim8m52ks3z8KmV/3ChoC1ovt9lE/UeuCQGaGc9tm7DsAsLwp49L3f56zPwbvqX41QNCz37twwFBSQeTmQLCcvd2eXRdOfO7oAttszWF4Zd9ip3eVNhw5Iqk1JVu1IKAwj61AFvQcOtN0TNjc0CvTbgROJp56PfvCJ2D8RhuTuSa6z+Uelb2HrFy1MQQOmiKXJ9IrjV6TZbWrDLB1nm+63bYjeGw/LdnpjVPeudusV7Hv/yenWxRRZqyDtJ1uXCKUwXc9exDW4IRtkh1xFQumBBpHrqRBfF2/C03y/7jk/z2IA/AABdTsYIIX54XFOgyMflhm32JKeiBy7BrYu3H+79lBsfGK6UbbDQaqFLVB2A0udD7Um3yttnL1znb+sr+yzHni2gQDZIi5Hvv8LbxNbhxLmKATSZrTc+Jt4eQ3uDcPxmmXG58grl5tUYucufHz4xeP8xmUzIMCkST2oNudH5t/YuBzxTtkP88Dicm1djZI8jki0HWpXb2KynF5Me+iDXUxcyNuFCaFAYGzTNYuT/RNEzRnIvAux22oLmoqvJJ//AzUP3Yo8Oj/E/3LA01VkPguR+620g87YAA6Ck1z/Q3bxYeM9t3lehcIBmv5Vbr2ediCX3PFm1+pa+O/u13H3twsD5Z+1XpQAFM8PzJFnpgehac0juD4Uj78IXDGPN3fzs/MfhvfuvsAWvXCt7r0YBu5h4kGHagarHGIxNllTcUnOLrbd6olepgNnkmwl7ImR7LW0Qm7w3YeYWupbRSyy/rlUS5ZdDK2gkfWvjHHtyk3ett67IXvJ6jl9XKokT8eXQChpJy9WFRNd6jr/3304aSd/UqvOtEVQShx8WAbb4cvpuiB8eB46k1T8jmJmk9IheyJCVxPmvNkfCZitfXrOiPY+kf2fmUcKqPJx6/9fO9z3BgO0K18nNM8lIOtZulZskaZrn+5sXBpmlZsuBxLCle32uNSva+zQRSwzKrsZzC7ELib7i9SWf2doV7e1Ok4lbldT7i1s/UZM/9yhEJK11GqM+rXh/KdWf59ENowBdzHZXpoy1BR3BQGaSZr31qyjiQfC4dUeJf0TPE8b5T5yQRtcxVL9CBTHSZhAsS9Rs23Dg2S53avH06y665lD9ChVobF77X54G1uoxy9hI9/4XM8WQAXaYhD6Qm9ees3MNItvxTyzdu0kXwASKFcPXgzyDyDmm3H6KMaBqCRSVwDqTZspljzMtVHiv36A5ilr8Y/e4nMOrVHBAOY1ANTaeHofHVMtWeEA5jWCsRTvO4Cl4YTF8F3M3AtuUeyqIoQuLNdigoo3A/TclfYdXpTqMdNFG4HHvYb1+LV4MbwSeaRzrOrvDUq2h32KqwYsFbwSV1KBAsZkiQIgIECIChIgAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIECIChIgAISJAiOoDFGj6SlURIEQECFETALFHENhAIps6JlfzZgdmu6/WP/TRAEBsKJrNXeWD9mxnzBY573SzyWR1qn5Ac/7nKCYbA/l4gfij0xP+l0lr+3Wp6gckZ3v0Zz1YPIkPTPMDYZfpcKopgBgMPmuzD09FJVsEiL+mLUgcTbqanNpAgPhraoP4XgIl5UKAxIb0YpwR+w/zYqwpHXdAwtJ0sziIvfKGNBZzP445oCMiAoSIACEiQIgIECIChIgAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIECIChIgAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIECIChIgAISJAiAgQIgKEiAAhIkCICBAiAoSIACEiQIgIEKL/A3JJ7GdA4pCpAAAAAElFTkSuQmCC" /><!-- --> As we can see in this heatmap that using <code>maxLength = 3</code> still gives you some more information. In real analysis, you may want to repeat the analysis and try <code>maxLength = 4</code>. In addition, you may also want to consider your alpha value to decide how much you want to trust those long pathways.</p>
+<p>The second element of <code>DominanceProbability</code> the dominance probability matrix, named <code>p.hat</code>. Here’s how you could pull out the dominance probability matrix:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="co"># displaying the first 5 rows and columns of the dominance probability matrix</span></a>
+<a class="sourceLine" id="cb37-2" title="2">DominanceProbability<span class="op">$</span>p.hat[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>##             Kalani      Kale  Kalleigh     Keira    Kibitz
 ## Kalani   0.0000000 0.5000000 0.4236125 0.5000000 0.5000000
 ## Kale     0.5000000 0.0000000 0.1180829 0.5000000 0.4040371
 ## Kalleigh 0.5763875 0.8819171 0.0000000 0.6325280 0.7095211
 ## Keira    0.5000000 0.5000000 0.3674720 0.0000000 0.4236125
-## Kibitz   0.5000000 0.5959629 0.2904789 0.5763875 0.0000000
-</code></pre>
-
-<p>When you want to use dominance probability matrix for further analysis, often a long-format representation of the matrix is easier. The function <code>dyadicLongConverter</code> convert win-loss uncertainty to long format.  </p>
-
-<pre><code class="r"># displaying the first 5 rows of the converted long format win-loss probability.
-dyadicLongConverter(DominanceProbability$p.hat)[1:5, ]
-</code></pre>
-
+## Kibitz   0.5000000 0.5959629 0.2904789 0.5763875 0.0000000</code></pre>
+<p>When you want to use dominance probability matrix for further analysis, often a long-format representation of the matrix is easier. The function <code>dyadicLongConverter</code> convert win-loss uncertainty to long format.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="co"># displaying the first 5 rows of the converted long format win-loss probability.</span></a>
+<a class="sourceLine" id="cb39-2" title="2"><span class="kw">dyadicLongConverter</span>(DominanceProbability<span class="op">$</span>p.hat)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, ]</a></code></pre></div>
 <pre><code>##       ID1      ID2 ID1 Win Probability ID2 Win Probability
 ## 12 Kalani     Kale           0.5000000           0.5000000
 ## 23 Kalani Kalleigh           0.4236125           0.5763875
@@ -489,118 +495,83 @@ dyadicLongConverter(DominanceProbability$p.hat)[1:5, ]
 ## 23        0.5763875
 ## 24        0.8819171
 ## 34        0.5000000
-## 35        0.5000000
-</code></pre>
-
+## 35        0.5000000</code></pre>
 <p>Simulated rank order is computed using a simulated annealing algorithm by running the function <code>simRankOrder</code> on <code>DominanceProbability$p.hat</code>. The argument <code>num</code> is the number of simulated annealing runs to generate best rank order. The argument <code>kmax</code> tells you how long (perhaps iterations) the simulated annealing function looks around for a local optimum to find the best rank order. By default, <code>kmax = 1000</code> was used. But it takes a long time to run when using <code>kmax = 1000</code>. The example below uses kmax = 10 just because it runs quickly and it is enough to illustrate the process, however this value is not recommended when processing real data. Here is how to use <code>simRankOrder</code> to find the simulated rank order:</p>
-
-<pre><code class="r"># find simRankOrder
-s.rank &lt;- simRankOrder(DominanceProbability$p.hat, num = 10, kmax = 10)
-</code></pre>
-
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co"># find simRankOrder</span></a>
+<a class="sourceLine" id="cb41-2" title="2">s.rank &lt;-<span class="st"> </span><span class="kw">simRankOrder</span>(DominanceProbability<span class="op">$</span>p.hat, <span class="dt">num =</span> <span class="dv">10</span>, <span class="dt">kmax =</span> <span class="dv">10</span>)</a></code></pre></div>
 <p>The function <code>s.rank</code> returns a list containing simulated rank order and Costs for each simulated annealing run. The best rank order will be the one with the lowest cost.</p>
-
-<pre><code class="r"># displaying the first 5 rows of the simulated rank order
-s.rank$BestSimulatedRankOrder[1:5, ]
-</code></pre>
-
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co"># displaying the first 5 rows of the simulated rank order</span></a>
+<a class="sourceLine" id="cb42-2" title="2">s.rank<span class="op">$</span>BestSimulatedRankOrder[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, ]</a></code></pre></div>
 <pre><code>##         ID ranking
 ## 1    Koppy       1
 ## 2    Kioga       2
 ## 3     Kuai       3
 ## 4 Kalleigh       4
-## 5   Kyushu       5
-</code></pre>
-
-<pre><code class="r"># displaying cost for each simulated annealing run
-s.rank$Costs
-</code></pre>
-
+## 5   Kyushu       5</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="co"># displaying cost for each simulated annealing run</span></a>
+<a class="sourceLine" id="cb44-2" title="2">s.rank<span class="op">$</span>Costs</a></code></pre></div>
 <pre><code>##    simAnnealRun     Cost
-## 1             1 2.321503
+## 1             1 2.392065
 ## 2             2 2.392065
 ## 3             3 2.392065
 ## 4             4 2.392065
-## 5             5 2.321503
+## 5             5 2.392065
 ## 6             6 2.392065
 ## 7             7 2.392065
 ## 8             8 2.321503
 ## 9             9 2.321503
-## 10           10 2.392065
-</code></pre>
-
-<pre><code class="r"># rank orders generated by each simulated annealing run 
-s.rank$AllSimulatedRankOrder
-</code></pre>
-
+## 10           10 2.321503</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="co"># rank orders generated by each simulated annealing run </span></a>
+<a class="sourceLine" id="cb46-2" title="2">s.rank<span class="op">$</span>AllSimulatedRankOrder</a></code></pre></div>
 <pre><code>##    SimAnneal1 SimAnneal2 SimAnneal3 SimAnneal4 SimAnneal5 SimAnneal6
 ## 1       Koppy      Koppy      Koppy      Koppy      Koppy      Koppy
 ## 2       Kioga      Kioga      Kioga      Kioga      Kioga      Kioga
-## 3        Kuai   Kalleigh   Kalleigh   Kalleigh       Kuai   Kalleigh
-## 4    Kalleigh     Kyushu     Kyushu     Kyushu   Kalleigh     Kyushu
-## 5      Kyushu     Kimora     Kimora     Kimora     Kyushu     Kimora
-## 6      Kimora       Kuai       Kuai       Kuai     Kimora       Kuai
-## 7      Kibitz     Kibitz     Kibitz     Kibitz     Kalani     Kibitz
-## 8       Keira     Kolyma     Kolyma      Keira     Kibitz      Keira
-## 9      Kalani       Kale     Kalani     Kalani     Kolyma     Kalani
-## 10     Kolyma      Keira       Kale     Kolyma       Kale     Kolyma
-## 11       Kale     Kalani      Keira       Kale      Keira       Kale
+## 3    Kalleigh   Kalleigh   Kalleigh   Kalleigh   Kalleigh   Kalleigh
+## 4      Kyushu     Kyushu     Kyushu     Kyushu     Kyushu     Kyushu
+## 5      Kimora     Kimora     Kimora     Kimora     Kimora     Kimora
+## 6        Kuai       Kuai       Kuai       Kuai       Kuai       Kuai
+## 7      Kibitz     Kalani     Kibitz     Kibitz     Kibitz     Kibitz
+## 8      Kolyma     Kibitz     Kolyma     Kolyma     Kolyma     Kolyma
+## 9      Kalani      Keira       Kale     Kalani     Kalani       Kale
+## 10      Keira     Kolyma     Kalani       Kale       Kale      Keira
+## 11       Kale       Kale      Keira      Keira      Keira     Kalani
 ##    SimAnneal7 SimAnneal8 SimAnneal9 SimAnneal10
 ## 1       Koppy      Koppy      Koppy       Koppy
 ## 2       Kioga      Kioga      Kioga       Kioga
-## 3    Kalleigh       Kuai       Kuai    Kalleigh
-## 4      Kyushu   Kalleigh   Kalleigh      Kyushu
-## 5      Kimora     Kyushu     Kyushu      Kimora
-## 6        Kuai     Kimora     Kimora        Kuai
-## 7      Kalani     Kibitz     Kibitz      Kalani
-## 8      Kibitz     Kalani     Kolyma      Kibitz
-## 9       Keira     Kolyma     Kalani      Kolyma
-## 10     Kolyma       Kale      Keira       Keira
-## 11       Kale      Keira       Kale        Kale
-</code></pre>
-
-<p>After finding the simulated rank order, you can apply the rank order to your dominance probability matrix in order to generate a heatmap with its rows and columns ordered by rank.  This heatmap will highlight areas of non-linear dominance rank (i.e. areas that are brown in the example below).  A block of individuals with probabilities near 0.5 indicates a subgroup of individuals whose relationships are not clearly defined.</p>
-
-<pre><code class="r">plotConfmat(DominanceProbability$p.hat, ordering = s.rank[[1]]$ID, labels = TRUE)
-</code></pre>
-
-<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-18"/></p>
-
+## 3    Kalleigh       Kuai       Kuai        Kuai
+## 4      Kyushu   Kalleigh   Kalleigh    Kalleigh
+## 5      Kimora     Kyushu     Kyushu      Kyushu
+## 6        Kuai     Kimora     Kimora      Kimora
+## 7      Kalani     Kalani     Kibitz      Kibitz
+## 8      Kibitz     Kibitz     Kalani      Kalani
+## 9       Keira     Kolyma     Kolyma       Keira
+## 10     Kolyma       Kale      Keira      Kolyma
+## 11       Kale      Keira       Kale        Kale</code></pre>
+<p>After finding the simulated rank order, you can apply the rank order to your dominance probability matrix in order to generate a heatmap with its rows and columns ordered by rank. This heatmap will highlight areas of non-linear dominance rank (i.e. areas that are brown in the example below). A block of individuals with probabilities near 0.5 indicates a subgroup of individuals whose relationships are not clearly defined.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">plotConfmat</span>(DominanceProbability<span class="op">$</span>p.hat, <span class="dt">ordering =</span> s.rank[[<span class="dv">1</span>]]<span class="op">$</span>ID, <span class="dt">labels =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div id="regarding-dominance-certainty" class="section level5">
 <h5>Regarding Dominance Certainty</h5>
-
 <p>Besides ranking information, the undirected certainty information in dominance relationship is also important. The values in the dominance probability matrix range from 0-1 indicating both the direction of the relationship and the certainty of the relationship. The function <code>valueConverter</code> converts all values to values between 0.5 - 1.0, which, in essence, removes directionality from the relationship leaving a single metric of dominance certainty (0.5 indicates total uncertainty and 1.0 indicates total certainty). For example,</p>
-
-<pre><code class="r"># displaying the first 5 rows and columns of the converted matrix
-valueConverter(DominanceProbability$p.hat)[1:5, 1:5]
-</code></pre>
-
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="co"># displaying the first 5 rows and columns of the converted matrix</span></a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="kw">valueConverter</span>(DominanceProbability<span class="op">$</span>p.hat)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>##             Kalani      Kale  Kalleigh     Keira    Kibitz
 ## Kalani   1.0000000 0.5000000 0.5763875 0.5000000 0.5000000
 ## Kale     0.5000000 1.0000000 0.8819171 0.5000000 0.5959629
 ## Kalleigh 0.5763875 0.8819171 1.0000000 0.6325280 0.7095211
 ## Keira    0.5000000 0.5000000 0.6325280 1.0000000 0.5763875
-## Kibitz   0.5000000 0.5959629 0.7095211 0.5763875 1.0000000
-</code></pre>
-
+## Kibitz   0.5000000 0.5959629 0.7095211 0.5763875 1.0000000</code></pre>
 <p>When you want to understand dyadic level dominance uncertainty, you could get the information from <code>dyadicLongConverter</code>. For example,</p>
-
-<pre><code class="r"># displaying the first 5 rows of Ranking Certainty
-dyadicLongConverter(DominanceProbability$p.hat)[1:5, c(&quot;ID1&quot;, &quot;ID2&quot;, &quot;RankingCertainty&quot;)]
-</code></pre>
-
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="co"># displaying the first 5 rows of Ranking Certainty</span></a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="kw">dyadicLongConverter</span>(DominanceProbability<span class="op">$</span>p.hat)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="kw">c</span>(<span class="st">&quot;ID1&quot;</span>, <span class="st">&quot;ID2&quot;</span>, <span class="st">&quot;RankingCertainty&quot;</span>)]</a></code></pre></div>
 <pre><code>##       ID1      ID2 RankingCertainty
 ## 12 Kalani     Kale        0.5000000
 ## 23 Kalani Kalleigh        0.5763875
 ## 24   Kale Kalleigh        0.8819171
 ## 34 Kalani    Keira        0.5000000
-## 35   Kale    Keira        0.5000000
-</code></pre>
-
-<p>When individual-level win-loss relationship uncertainty is the focus of your question, the function <code>individualDomProb</code> computes the mean and standard deviation for individual-level win-loss probability. </p>
-
-<pre><code class="r">individualDomProb(DominanceProbability$p.hat)[1:10,]
-</code></pre>
-
+## 35   Kale    Keira        0.5000000</code></pre>
+<p>When individual-level win-loss relationship uncertainty is the focus of your question, the function <code>individualDomProb</code> computes the mean and standard deviation for individual-level win-loss probability.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="kw">individualDomProb</span>(DominanceProbability<span class="op">$</span>p.hat)[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,]</a></code></pre></div>
 <pre><code>##          ID      Mean        SD
 ## 1    Kalani 0.6079515 0.1705907
 ## 2      Kale 0.6403923 0.1628646
@@ -611,9 +582,25 @@ dyadicLongConverter(DominanceProbability$p.hat)[1:5, c(&quot;ID1&quot;, &quot;ID
 ## 7     Kioga 0.7037738 0.1644045
 ## 8    Kolyma 0.6072364 0.1559790
 ## 9     Koppy 0.7157361 0.1433639
-## 10     Kuai 0.6873502 0.1703318
-</code></pre>
+## 10     Kuai 0.6873502 0.1703318</code></pre>
+</div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 </body>
-
 </html>

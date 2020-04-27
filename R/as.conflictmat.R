@@ -135,9 +135,16 @@ as.conflictmat = function(Data, weighted = FALSE, swap.order = FALSE){
       mat <- as.matrix(Data)
       
     }
-    # update 2016.1.18: sorted matrix by colnames
-    sorted_subjects = unique(sort(colnames(mat)))
-    mat_sorted = mat[sorted_subjects, sorted_subjects]
+    ##Update 4/27/2020: code fails when called from sampleDist function in bt.test because sample matrix is not named
+    # don't require sorting of matrix if it is called from sampleDist.
+    call_list = sapply(sys.calls(),deparse)
+    if (sum(sapply("sampleDist", grepl, call_list, fixed = TRUE)) > 0){
+      mat_sorted = mat
+    } else {
+      # update 2016.1.18: sorted matrix by colnames
+      sorted_subjects = unique(sort(colnames(mat)))
+      mat_sorted = mat[sorted_subjects, sorted_subjects]
+    }
   } else {
     mat_sorted <- edgelisttomatrix(Data, weighted, swap.order)
   }

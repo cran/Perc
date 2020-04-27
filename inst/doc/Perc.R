@@ -24,7 +24,7 @@ confmatrix[1:5, 1:5]
 confmatrix2 <- as.conflictmat(sampleRawMatrix)
 
 # displaying the first 5 rows and columns of the converted matrix
-confmatrix2[1]
+confmatrix2[1:5, 1:5]
 
 ## ------------------------------------------------------------------------
 confmatrix3 <- as.conflictmat(sampleWeightedEdgelist, weighted = TRUE)

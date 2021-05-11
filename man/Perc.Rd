@@ -5,5 +5,5 @@
 \alias{Perc}
 \title{Perc.}
 \description{
-Perc.
+A package to measure information flow (e.g. dominance) through a network
 }
